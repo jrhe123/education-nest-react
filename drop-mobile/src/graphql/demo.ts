@@ -9,3 +9,9 @@ export const FIND = gql`
 		}
 	}
 `;
+
+export const UPDATE = gql`
+	mutation update($id: String!, $params: UserInput!) {
+		update(id: $id, params: $params)
+	}
+`;
