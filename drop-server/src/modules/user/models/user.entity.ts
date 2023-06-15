@@ -1,7 +1,10 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { IsNotEmpty } from 'class-validator';
 @Entity('user')
 export class User {
+  @PrimaryGeneratedColumn('uuid')
+  id: string;
+
   @Column({
     comment: 'name',
     default: '',
