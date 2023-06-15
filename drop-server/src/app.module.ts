@@ -16,7 +16,7 @@ import { UserModule } from './modules/user/user.module';
       database: 'education_nest_react',
       entities: [`${__dirname}/../modules/**/*.entity{.ts,.js}`],
       logging: true,
-      synchronize: true,
+      synchronize: false,
       autoLoadEntities: true,
     }),
     UserModule,
