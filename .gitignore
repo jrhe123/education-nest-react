@@ -7,6 +7,11 @@
 /drop-mobile/dist-ssr
 /drop-mobile/*.local
 
+/drop-web/node_modules
+/drop-web/dist
+/drop-web/dist-ssr
+/drop-web/*.local
+
 # Logs
 logs
 *.log
