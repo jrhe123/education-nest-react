@@ -20,4 +20,9 @@ export class AppController {
       account: 'account',
     });
   }
+
+  @Get('/del')
+  async del(): Promise<boolean> {
+    return await this.userService.del('f4f8f811-aba9-4887-b008-060982a9baf8');
+  }
 }
