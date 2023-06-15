@@ -38,6 +38,8 @@ const App = () => {
 
 	return (
 		<div>
+			<p>{JSON.stringify(data)}</p>
+
 			<label htmlFor="name">Name</label>
 			<input type="text" name="name" onChange={onChangeInputHandler} />
 

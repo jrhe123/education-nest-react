@@ -1,0 +1,27 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type UserType {
+  id: String!
+  name: String!
+  desc: String!
+
+  """account info"""
+  account: String!
+}
+
+type Query {
+  find(id: String!): UserType!
+}
+
+type Mutation {
+  create(params: UserInput!): Boolean!
+  update(id: String!, params: UserInput!): Boolean!
+  delete(id: String!): Boolean!
+}
+
+input UserInput {
+  name: String!
+  desc: String!
+}
