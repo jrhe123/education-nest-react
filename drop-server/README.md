@@ -58,16 +58,49 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## GraphQL example
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```
+query find($id:String!) {
+  find(id: $id) {
+    name
+  }
+}
+{
+  "id":"720f3703-89c4-407e-ac49-ac071bdb98c6"
+}
+```
 
-## Stay in touch
+```
+mutation create($params:UserInput!) {
+  create(params: $params)
+}
+{
+  "params": {
+    "name":"new user",
+    "desc":"new desc"
+  }
+}
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```
+mutation update($id: String!, $params:UserInput!) {
+  update(id: $id, params: $params)
+}
+{
+  "id":"f962e8bc-23e7-4c3a-a408-61155bf805a1",
+  "params": {
+    "name":"new user updated",
+    "desc":"new desc updated"
+  }
+}
+```
 
-## License
-
-Nest is [MIT licensed](LICENSE).
+```
+mutation delete($id: String!) {
+  delete(id: $id)
+}
+{
+  "id":"f962e8bc-23e7-4c3a-a408-61155bf805a1"
+}
+```

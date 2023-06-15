@@ -64,3 +64,9 @@ query findUserById($id: String) {
   }
 }
 ```
+
+### Vite
+
+#### Why we use it
+
+1. FAST
