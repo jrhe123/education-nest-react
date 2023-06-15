@@ -17,9 +17,9 @@ export class UserService {
 
   async del(id: string): Promise<boolean> {
     const res = await this.userRepo.delete(id);
-    // if (res?.raw.affectedRows > 0) {
-    //   return true;
-    // }
-    return true;
+    if (res?.raw.affectedRows > 0) {
+      return true;
+    }
+    return false;
   }
 }
