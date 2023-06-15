@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useLayoutEffect } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { FIND, UPDATE } from "./graphql/demo";
+import { Button, Form, Input } from "antd-mobile";
 
 import "./App.css";
 
 const App = () => {
-	const [name, setName] = useState("");
-	const [desc, setDesc] = useState("");
+	useLayoutEffect(() => {
+		document.documentElement.setAttribute("data-prefers-color-scheme", "dark");
+	}, []);
 
 	const { loading, data } = useQuery(FIND, {
 		variables: {
@@ -16,21 +18,12 @@ const App = () => {
 
 	const [update] = useMutation(UPDATE);
 
-	const onChangeInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (e.target.name === "name") {
-			setName(e.target.value);
-		} else {
-			setDesc(e.target.value);
-		}
-	};
-
-	const onSumbitHandler = () => {
+	const onSumbitHandler = (e: { name: string; desc: string }) => {
 		update({
 			variables: {
 				id: "720f3703-89c4-407e-ac49-ac071bdb98c6",
 				params: {
-					name,
-					desc,
+					...e,
 				},
 			},
 		});
@@ -38,17 +31,24 @@ const App = () => {
 
 	return (
 		<div>
-			<p>{JSON.stringify(data)}</p>
+			<Form
+				layout="horizontal"
+				onFinish={onSumbitHandler}
+				footer={
+					<Button block type="submit" color="primary" size="large">
+						update
+					</Button>
+				}
+			>
+				<p>{JSON.stringify(data)}</p>
+				<Form.Item name={"name"} label={"name"}>
+					<Input type="text" name="name" />
+				</Form.Item>
 
-			<label htmlFor="name">Name</label>
-			<input type="text" name="name" onChange={onChangeInputHandler} />
-
-			<label htmlFor="desc">Description</label>
-			<input type="text" name="desc" onChange={onChangeInputHandler} />
-
-			<button type="button" onClick={onSumbitHandler}>
-				update now
-			</button>
+				<Form.Item name={"desc"} label={"description"}>
+					<Input type="text" name="desc" />
+				</Form.Item>
+			</Form>
 		</div>
 	);
 };

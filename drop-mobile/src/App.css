@@ -5,6 +5,10 @@
 	text-align: center;
 }
 
+:root:root {
+	--adm-color-primary: #a062d4;
+}
+
 .logo {
 	height: 6em;
 	padding: 1.5em;
