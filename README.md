@@ -1,6 +1,6 @@
-# education-nest-react
+# Education Platform for Commeric
 
-### Our structure
+## Our structure
 
 ```
  -----------------------
@@ -14,7 +14,7 @@
  -----------------------
 ```
 
-### GraphQL
+## GraphQL
 
 #### Why we use it
 
@@ -65,7 +65,7 @@ query findUserById($id: String) {
 }
 ```
 
-### Vite
+## Vite
 
 #### Why we use it
 
