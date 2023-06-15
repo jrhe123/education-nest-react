@@ -25,7 +25,7 @@
 
 #### How to use it
 
-1. URL: http://localhost:3333/graphql
+1. URL: http://localhost:3000/graphql
 2. OperationName: findUserById
 3. Query: "query findUserById ....."
 4. Variables: id, ...
