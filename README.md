@@ -16,13 +16,24 @@
 
 ### GraphQL
 
+#### Why we use it
+
 1. no redundant
 2. one request, 2 dtos data
 3. params verification
 4. document auto-generate
 
+#### How to use it
+
+1. URL: http://localhost:3333/graphql
+2. OperationName: findUserById
+3. Query: "query findUserById ....."
+4. Variables: id, ...
+
+#### Example
+
 - query VO <----> DTO(s)
-- mutate
+- mutation
 
 ```
 query findUserById($id: String) {
