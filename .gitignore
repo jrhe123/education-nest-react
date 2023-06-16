@@ -1,6 +1,9 @@
 # compiled output
 /drop-server/dist
 /drop-server/node_modules
+/drop-server/gcp.json
+/drop-server/.env
+/drop-server/uploads
 
 /drop-mobile/node_modules
 /drop-mobile/dist

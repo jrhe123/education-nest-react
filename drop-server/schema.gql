@@ -19,9 +19,13 @@ type Mutation {
   create(params: UserInput!): Boolean!
   update(id: String!, params: UserInput!): Boolean!
   delete(id: String!): Boolean!
+  singleUpload(file: Upload!, name: String!): Boolean!
 }
 
 input UserInput {
   name: String!
   desc: String!
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
