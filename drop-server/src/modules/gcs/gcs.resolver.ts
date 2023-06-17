@@ -6,31 +6,32 @@ import { GraphQLUpload, FileUpload } from 'graphql-upload';
 import { createWriteStream, readFile } from 'fs';
 import { join } from 'path';
 import { v4 as uuidv4 } from 'uuid';
-
+import { FileType } from './dto/file.type';
 @Resolver()
 export class GCSResolver {
   constructor(private readonly gcsService: GCSService) {}
 
   // https://stackoverflow.com/questions/75744174/how-to-upload-images-in-nestjs-with-graphql
-  @Mutation(() => Boolean)
+  @Mutation(() => String)
   async singleUpload(
     @Args({ name: 'file', type: () => GraphQLUpload })
     { createReadStream, filename }: FileUpload,
     @Args('name') name: string,
-  ): Promise<boolean> {
+  ): Promise<string> {
     // TODO: use it later on
     console.log('name: ', name);
-    const filePath = `uploads/${uuidv4()}_${filename}`;
+    const fileName = `${uuidv4()}_${filename}`;
+    const filePath = `uploads/${fileName}`;
     return new Promise(async (resolve, reject) =>
       createReadStream()
         .pipe(createWriteStream(join(process.cwd(), filePath)))
         .on('finish', async () => {
           const buffer = (await convert(filePath)) as Buffer;
-          if (!buffer) reject(false);
+          if (!buffer) reject();
           await this.gcsService.save(filePath, buffer, [{ mediaId: name }]);
-          resolve(true);
+          resolve(fileName);
         })
-        .on('error', () => reject(false)),
+        .on('error', () => reject()),
     );
   }
 }

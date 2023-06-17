@@ -11,15 +11,21 @@ type UserType {
   account: String!
 }
 
+type FileType {
+  url: String!
+  filename: String!
+}
+
 type Query {
   find(id: String!): UserType!
+  getFile(filename: String!): FileType!
 }
 
 type Mutation {
   create(params: UserInput!): Boolean!
   update(id: String!, params: UserInput!): Boolean!
   delete(id: String!): Boolean!
-  singleUpload(file: Upload!, name: String!): Boolean!
+  singleUpload(file: Upload!, name: String!): String!
 }
 
 input UserInput {

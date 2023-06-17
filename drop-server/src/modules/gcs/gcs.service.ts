@@ -7,6 +7,7 @@ import StorageConfig from './gcs.config';
 export class GCSService {
   private storage: Storage;
   private bucket: string;
+  private url: string;
 
   constructor() {
     this.storage = new Storage({
@@ -17,6 +18,7 @@ export class GCSService {
       },
     });
     this.bucket = StorageConfig.mediaBucket;
+    this.url = StorageConfig.imageUrl;
   }
 
   async save(
@@ -33,6 +35,10 @@ export class GCSService {
       });
     });
     stream.end(media);
+  }
+
+  getUrl(fileName: string) {
+    return `${this.url}/${fileName}`;
   }
 
   async delete(path: string) {
